@@ -84,3 +84,14 @@ function popupHeadingUpdate() {
     });
 }
 popupHeadingUpdate();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll(".module-card-container--outer");
+  let maxHeight = 0;
+  cards.forEach(card => {
+    if (card.offsetHeight > maxHeight) maxHeight = card.offsetHeight;
+  });
+  cards.forEach(card => {
+    card.style.height = maxHeight + "px";
+  });
+});
