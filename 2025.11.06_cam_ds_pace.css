@@ -30,10 +30,10 @@
 }
 
 /*##################################################################################################################################*/
-/*###############   Element: Banners & Page Titles (Stabilized + Clean Spacing)   ###################################################*/
+/*###############   Element: Banners & Page Titles (Stable, no overlay)   ##########################################################*/
 /*##################################################################################################################################*/
 
-/* Remove default frame and padding */
+/* Clean frame + consistent top spacing */
 body.assignments #content-wrapper,
 body.assignments #content,
 body.discussions #content-wrapper,
@@ -42,61 +42,50 @@ body.pages #content-wrapper {
   box-shadow: none !important;
   background: transparent !important;
   padding: 0 !important;
-  margin-top: 40px !important; /* consistent spacing above banner */
+  margin-top: 40px !important; /* consistent gap above banner area */
 }
 
-/* Ensure container supports overlay positioning */
+/* Let the banner title overlay safely */
 body.assignments #assignment_show,
 body.discussions #discussion_topic,
 body.pages #wiki_page_show {
-  position: relative;
-  overflow: hidden;
+  position: relative;    /* creates the local stacking context for the title */
+  overflow: visible;
 }
 
-/* Floating title box */
+/* Title chip (kept near the top-left) */
 body.assignments .assignment-title,
 body.discussions .discussion-title,
 body.pages .page-title {
   position: absolute !important;
-  top: 1.8rem; /* moves heading down slightly */
-  left: 2.5rem;
-  z-index: 10;
-  background: rgba(255,255,255,0.95);
-  padding: 0.6rem 1.3rem;
+  top: 1.6rem;           /* slightly down from the edge */
+  left: 2.4rem;
+  z-index: 3;            /* above the image */
+  background: rgba(255,255,255,0.96);
+  padding: 0.6rem 1.2rem;
   border-radius: 6px;
   color: #133844;
   font-size: 1.3rem;
   font-weight: 600;
   line-height: 1.3;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
-/* Banner image with stable placeholder height */
+/* Banner image: fixed, non-jumping height and no overlays */
 body.assignments #assignment_show img:first-of-type,
 body.discussions #discussion_topic img:first-of-type,
 body.pages #wiki_page_show img:first-of-type {
-  width: 100%;
-  height: auto;
   display: block;
+  width: 100%;
+  /* Locks the space BEFORE the file finishes loading, so nothing jumps.
+     Tweak the middle value to make the banner taller/shorter overall. */
+  height: clamp(240px, 34vw, 420px);
   object-fit: cover;
-  aspect-ratio: 16/9;
-  background-color: #f4f4f4; /* keeps placeholder space stable */
-  transition: opacity 0.3s ease-in-out; /* subtle load fade */
-  opacity: 1;
+  background-color: #f4f4f4;  /* neutral placeholder tone */
+  opacity: 1;                 /* no fade or slide */
 }
 
-/* Prevent layout jump on slow image loads */
-body.assignments #assignment_show::before,
-body.discussions #discussion_topic::before,
-body.pages #wiki_page_show::before {
-  content: "";
-  display: block;
-  width: 100%;
-  background-color: #f4f4f4;
-  aspect-ratio: 16/9;
-}
-
-/* Maintain spacing below banner */
+/* Space below the banner on assignment pages */
 body.context-assignments #assignment_show .assignment-buttons {
   margin-top: 16px;
 }
