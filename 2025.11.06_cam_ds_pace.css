@@ -28,155 +28,58 @@
     padding-top: 20px; /* Adds space between the top border and the buttons */
 }
 
+
 /*##################################################################################################################################*/
 /*###############   Element: Banners & Page Titles   ###############################################################################*/
 /*##################################################################################################################################*/
+/* === Assignment, Discussion & Page Banners === */
 
-/* --- H1 Course Title (Option 1: Standard Heading) --- */
-/* This rule styles the H1 as a clean, prominent heading that sits
-   in the normal page flow, with a subtle brand-colored underline. */
-
-.pages.show.home .course-title {
-    font-family: 'Feijoa', serif;
-    font-weight: bold;
-    color: #133844;
-    padding-bottom: 10px;
-    margin: 0;
-}
-
-/* --- Page Titles --- */
-/* Styles the main H1 page title that appears over the banner.
-   This rule ensures the title is prominent, legible against the banner,
-   and consistently positioned across different page types. */
-
-.pages.show .page-title,
-.discussions .topic h1.discussion-title,
-#assignment_show .assignment-title .title-content .title {
-    font-family: 'Feijoa', serif;
-    font-size: 28px;
-    font-weight: 400;
-    color: #133844;
-    position: absolute;
-    top: 110px;
-    left: 10%;
-    right: 10%;
-    background-color: rgb(255 255 255 / 90%);
-    padding: 10px 20px;
-    margin: 0 auto;
-    box-shadow: 0px 0px 65px 30px rgb(0 0 0 / 15%);
-    z-index: 999;
-}
-
-/* --- Banners --- */
-/* Styles the main banner container. It sets a placeholder background color,
-   a minimum height, and uses flexbox to center the image. This serves as
-   the backdrop for the floating page title. */
-
-.banner-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 315px !important;
-    background-color: #F8F9FA; /* Light grey placeholder background */
-    margin-bottom: 40px;
-    overflow: hidden;
-    position: relative;
-    border-radius: 0;
-}
-
-.banner-container img {
-    width: 100%;
-    height: 100%; /* Ensure image fills the container's height */
-    min-height: 272px; /* Match the container's min-height */
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-}
-
-/* This class is added to banner images in the HTML to prevent zoom functionality. */
-.no-hover-zoom {
-    cursor: default !important;
-}
-
-.no-hover-zoom:hover {
-    transform: none !important;
-}
-
-/* --- Assignment Page Styling --- */
-.assignment .ic-Layout-content__main {
-  border: none !important; /* removes the frame */
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-}
-
-.assignment .ic-Layout-content__title,
-.assignment h1.page-title {
-  position: absolute !important;
-  top: 30px;
-  left: 40px;
-  z-index: 10;
-  font-size: 24px;
-  color: #133844;
-  background: rgba(255,255,255,0.85);
-  padding: 10px 20px;
-  border-radius: 4px;
-}
-
-.assignment .ic-Layout-content__main img:first-of-type {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-top: 60px; /* gives room for overlay title */
-}
-
-.assignment .ic-Layout-wrapper {
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* === Assignments: float title over banner + remove frame === */
-
-/* remove the outer frame on assignment pages */
-body.context-assignments #content,
-body.context-assignments #content-wrapper {
+/* Remove the default frame and shadow */
+body.assignments #content-wrapper,
+body.assignments #content,
+body.discussions #content-wrapper,
+body.pages #content-wrapper {
   border: none !important;
   box-shadow: none !important;
   background: transparent !important;
   padding: 0 !important;
 }
 
-/* make the assignment area the positioning context */
-body.context-assignments #assignment_show {
+/* Make the heading float over the first image */
+body.assignments #assignment_show,
+body.discussions #discussion_topic,
+body.pages #wiki_page_show {
   position: relative;
 }
 
-/* float the H1 over the first image */
-body.context-assignments #assignment_show .assignment-title {
+/* Floating title box */
+body.assignments .assignment-title,
+body.discussions .discussion-title,
+body.pages .page-title {
   position: absolute !important;
-  top: 24px;
-  left: 24px;
-  z-index: 5;
-}
-
-body.context-assignments #assignment_show .assignment-title .title-content,
-body.context-assignments #assignment_show .assignment-title .title-content .title {
-  margin: 0 !important;
-  padding: 8px 14px;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 10;
   background: rgba(255,255,255,0.9);
+  padding: 0.6rem 1.2rem;
   border-radius: 4px;
   color: #133844;
-  font-size: 22px; /* adjust if needed */
-  line-height: 1.2;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
-/* ensure the banner image spans full width and sits under title */
-body.context-assignments #assignment_show img:first-of-type {
-  display: block;
+/* Ensure banner image sits behind title */
+body.assignments #assignment_show img:first-of-type,
+body.discussions #discussion_topic img:first-of-type,
+body.pages #wiki_page_show img:first-of-type {
   width: 100%;
   height: auto;
+  display: block;
+  margin-top: 4rem; /* creates space for overlay */
 }
 
-/* optional: add space below the banner so content doesn't collide */
+/* Add space below the banner so content doesn’t collide */
 body.context-assignments #assignment_show .assignment-buttons {
   margin-top: 12px;
 }
