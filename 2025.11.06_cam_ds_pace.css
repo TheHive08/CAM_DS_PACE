@@ -19,6 +19,7 @@
   margin-left: auto !important;
   margin-right: auto !important;
   float: none !important;
+  padding-top: 0 !important; /* removes excess spacing above banner */
 }
 
 /* --- Module Sequence Footer Spacing --- */
@@ -31,7 +32,13 @@
 /*###############   Element: Banners & Page Titles (Refined)   ######################################################################*/
 /*##################################################################################################################################*/
 
-/* Remove default frame and padding */
+/* --- Banner Fade-In Animation --- */
+@keyframes bannerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Remove default frame and padding --- */
 body.assignments #content-wrapper,
 body.assignments #content,
 body.discussions #content-wrapper,
@@ -40,36 +47,36 @@ body.pages #content-wrapper {
   box-shadow: none !important;
   background: transparent !important;
   padding: 0 !important;
-  margin-top: 30px !important; /* spacing above banner */
+  margin-top: 10px !important; /* reduced to align banner closer to top */
 }
 
-/* Ensure the main content allows overlay */
+/* --- Allow overlay positioning --- */
 body.assignments #assignment_show,
 body.discussions #discussion_topic,
 body.pages #wiki_page_show {
   position: relative;
 }
 
-/* Floating title box */
+/* --- Floating title box --- */
 body.assignments .assignment-title,
 body.discussions .discussion-title,
 body.pages .page-title {
   position: absolute !important;
-  top: 45%; /* lower the heading vertically */
-  left: 2.5rem;
+  top: 55%; /* centers better vertically on most banners */
+  left: 2rem;
   transform: translateY(-50%);
   z-index: 10;
-  background: rgba(255,255,255,0.92);
-  padding: 0.7rem 1.5rem;
+  background: rgba(255,255,255,0.94);
+  padding: 0.7rem 1.4rem;
   border-radius: 6px;
   color: #133844;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.3;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-
+/* --- Banner image + placeholder background --- */
 body.assignments #assignment_show img:first-of-type,
 body.discussions #discussion_topic img:first-of-type,
 body.pages #wiki_page_show img:first-of-type {
@@ -79,17 +86,16 @@ body.pages #wiki_page_show img:first-of-type {
   background-color: #f4f4f4;
   aspect-ratio: 16/9;
   object-fit: cover;
-  margin-top: 3rem;
+  margin-top: 2rem; /* reduced top margin for cleaner layout */
   animation: bannerFadeIn 1.5s ease-in-out both;
 }
 
-
-/* Space below banner */
+/* --- Space below banner --- */
 body.context-assignments #assignment_show .assignment-buttons {
   margin-top: 20px;
 }
 
-/* Placeholder when image missing */
+/* --- Placeholder when image missing --- */
 body.assignments #assignment_show:not(:has(img))::before,
 body.discussions #discussion_topic:not(:has(img))::before,
 body.pages #wiki_page_show:not(:has(img))::before {
@@ -99,6 +105,7 @@ body.pages #wiki_page_show:not(:has(img))::before {
   background-color: #f4f4f4;
   aspect-ratio: 16/9;
 }
+
 
 
 /*##################################################################################################################################*/
