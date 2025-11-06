@@ -1,0 +1,622 @@
+/* Imports the required brand fonts: Feijoa for headings and Open Sans for body text.
+   Establishes the default font styles, line height, and color for the main body
+   to ensure a consistent baseline across the platform. */
+@import url('https://fonts.googleapis.com/css2?family=Feijoa&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+/*##################################################################################################################################*/
+/*###############   Element: Page Width + Footer Margin   ##########################################################################*/
+/*##################################################################################################################################*/
+
+/* --- General Platform Layout & Responsiveness --- */
+/* This rule targets the primary content container across all page types
+   to enforce a consistent maximum width. Using float: none helps ensure
+   the margin: auto centering is applied correctly. */
+
+.ic-Layout-contentMain {
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
+}
+
+/* --- Module Sequence Footer Spacing --- */
+/* Adds vertical spacing and a separator line above the 'Previous/Next'
+   navigation buttons at the bottom of the page. */
+
+.module-sequence-footer {
+    margin-top: 40px; /* Adds space above the footer */
+    padding-top: 20px; /* Adds space between the top border and the buttons */
+}
+
+/*##################################################################################################################################*/
+/*###############   Element: Banners & Page Titles   ###############################################################################*/
+/*##################################################################################################################################*/
+
+/* --- H1 Course Title (Option 1: Standard Heading) --- */
+/* This rule styles the H1 as a clean, prominent heading that sits
+   in the normal page flow, with a subtle brand-colored underline. */
+
+.pages.show.home .course-title {
+    font-family: 'Feijoa', serif;
+    font-weight: bold;
+    color: #133844;
+    padding-bottom: 10px;
+    margin: 0;
+}
+
+/* --- Page Titles --- */
+/* Styles the main H1 page title that appears over the banner.
+   This rule ensures the title is prominent, legible against the banner,
+   and consistently positioned across different page types. */
+
+.pages.show .page-title,
+.discussions .topic h1.discussion-title,
+#assignment_show .assignment-title .title-content .title {
+    font-family: 'Feijoa', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #133844;
+    position: absolute;
+    top: 110px;
+    left: 10%;
+    right: 10%;
+    background-color: rgb(255 255 255 / 90%);
+    padding: 10px 20px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 65px 30px rgb(0 0 0 / 15%);
+    z-index: 999;
+}
+
+/* --- Banners --- */
+/* Styles the main banner container. It sets a placeholder background color,
+   a minimum height, and uses flexbox to center the image. This serves as
+   the backdrop for the floating page title. */
+
+.banner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 315px !important;
+    background-color: #F8F9FA; /* Light grey placeholder background */
+    margin-bottom: 40px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0;
+}
+
+.banner-container img {
+    width: 100%;
+    height: 100%; /* Ensure image fills the container's height */
+    min-height: 272px; /* Match the container's min-height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+/* This class is added to banner images in the HTML to prevent zoom functionality. */
+.no-hover-zoom {
+    cursor: default !important;
+}
+
+.no-hover-zoom:hover {
+    transform: none !important;
+}
+
+/*##################################################################################################################################*/
+/*###############   Element: Text & Typography   ###################################################################################*/
+/*##################################################################################################################################*/
+
+/* --- Global Font Imports & Body Text --- */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.8;
+    color: #232830;
+}
+
+/* --- Headings (H1-H6) --- */
+/* Defines the standard heading hierarchy for all content within the page body.
+   H1-H3 use the 'Feijoa' serif font for major section breaks, while H4-H6 use
+   'Open Sans' for sub-sections, maintaining a clear visual structure. */
+
+h1, h2, h3 {
+    font-family: 'Feijoa', serif;
+    font-weight: normal;
+    color: #133844;
+}
+
+h2 {
+    padding-top: 30px !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100px;
+    margin: 8px 0 0 0;
+    background-color: #FD8153; /* Updated to brand orange */
+}
+
+h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #546072;
+}
+
+/* --- Paragraphs & Lists --- */
+/* Sets the styling for standard paragraph text and both ordered/unordered lists.
+   Spacing, line height, and margins are defined for optimal readability. */
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #232830;
+    margin: 0 !important;
+    padding: 12px 0;
+}
+
+ul,
+ol {
+    padding-left: 20px;
+    margin: 0 0 20px 15px;
+}
+
+li {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #232830;
+    margin: 8px 0;
+}
+
+/* --- Code & Preformatted Text --- */
+/* Styles for inline code snippets (`code`) and larger code blocks (`pre`).
+   A monospace font is used for code clarity, and distinct background/border
+   styles are applied to separate code from regular paragraph text. */
+
+code {
+    font-family: 'Fira Code', 'Monaco', Menlo, Consolas, "Courier New", monospace !important;
+    font-size: 15px !important;
+    color: #133844 !important;
+    background-color: #EBEDFB;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+pre {
+    font-family: 'Fira Code', 'Monaco', Menlo, Consolas, "Courier New", monospace !important;
+    color: #232830;
+    display: block;
+    line-height: 1.6;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f8f9fa;
+    border: 1px solid #B5BDC8 !important;
+    padding: 15px !important;
+    border-radius: 8px;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+/*##################################################################################################################################*/
+/*###############   Element: Videos & Transcripts   ################################################################################*/
+/*##################################################################################################################################*/
+
+/* --- Videos & Transcripts --- */
+/* This section styles the container for embedded videos and the accompanying
+   transcript button and popup window. */
+
+.pad-box-mega.border.border-trbl {
+    padding: 20px 40px;
+    max-width: 1000px;
+    margin: 20px auto;
+    border: 1px solid #D4D7DE;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    box-shadow: none;
+}
+
+/* Adds more space below the video section heading */
+.pad-box-mega.border.border-trbl h4 {
+    margin-bottom: 20px !important;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    background-color: #F8F9FA;
+    border-radius: 8px;
+    box-shadow: none;
+    border: 1px solid #D4D7DE;
+}
+
+.video-container iframe,
+.video_responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Adds space above the transcript button */
+div[style="text-align: center;"] {
+    margin-top: 20px;
+}
+
+/* A smaller, grey, less prominent button */
+.btn.btn-small.transcript-button {
+    background-color: #f5f5f5;
+    color: #444;
+    border: 1px solid #dedede;
+    padding: 4px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn.btn-small.transcript-button:hover {
+    background-color: #e8e8e8;
+    border-color: #ccc;
+    color: #222;
+}
+
+/* --- Transcript Modal & Overlay --- */
+/* Styles the popup window (modal) for the transcript and hides the background overlay */
+
+/* Makes the background overlay completely invisible */
+.ui-widget-overlay {
+    background: transparent !important;
+    opacity: 0 !important;
+}
+
+/* Sets a wider, more readable width for the transcript modal */
+.ui-dialog.ui-widget-content {
+    width: 80% !important;
+    max-width: 1000px !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%);
+    margin: 0 !important;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    background-color: #FFFFFF;
+    padding: 20px;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    max-height: 80vh; /* Limit height to 80% of the viewport */
+    display: block;
+}
+
+/* Ensures the transcript text container is responsive within the modal */
+#transcript_1 {
+    width: auto !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding-right: 15px;
+}
+
+/*##################################################################################################################################*/
+/*###############   Element: Accordions   ##########################################################################################*/
+/*##################################################################################################################################*/
+
+/* --- Accordions --- */
+/* Styles for the native HTML <details> and <summary> accordion component. */
+
+details {
+    margin-top: 15px;
+    border: 1px solid #D4D7DE;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+summary.accordions {
+    display: block;
+    background-color: #F8F9FA;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #133844;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    padding: 12px 20px;
+    outline: none;
+    transition: background-color 0.4s ease;
+    position: relative; /* Required for icon positioning */
+}
+
+/* Hide the default arrow/marker */
+summary.accordions::-webkit-details-marker,
+summary.accordions::marker {
+    display: none;
+}
+
+/* Create the icon using two pseudo-elements */
+summary.accordions::before,
+summary.accordions::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 14px;
+    height: 2px;
+    background-color: #133844;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+summary.accordions::after {
+    transform: translateY(-50%) rotate(90deg); /* Creates the vertical bar */
+}
+
+/* When open, transform the two bars into a minus sign */
+details[open] > summary.accordions::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Styles for when the accordion is open */
+details[open] > summary.accordions {
+    background-color: #EBEDFB;
+    border-bottom: 1px solid #D4D7DE;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Styles for the content panel inside the <details> element */
+.panel {
+    background-color: #FFFFFF;
+    padding: 15px 20px;
+}
+
+.panel p {
+    padding: 8px 0;
+}
+
+/*##################################################################################################################################*/
+/*###############   Element: Structured Content Blocks   ############################################################################*/
+/*##################################################################################################################################*/
+
+/* --- Table Caption --- */
+/* This rule moves the table's caption to appear below the table data
+   and adds styling for better readability. */
+
+caption {
+    caption-side: bottom;
+    margin-top: 10px; /* Adds space between the table and the caption */
+    font-size: 0.9em;
+    font-style: italic;
+    color: #546072; /* A subtle grey color */
+    text-align: center;
+}
+
+
+/* --- Wells (Information Boxes) --- */
+/* Styles for structured content boxes, consisting of a distinct heading and content area. */
+
+.box_heading {
+    background-color: #F8F9FA;
+    padding: 15px 20px 10px 20px;
+    margin: 25px 0 0 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #133844;
+    border: 1px solid #D4D7DE;
+    border-radius: 8px 8px 0 0;
+}
+
+.box_heading a[class*="icon-"]:before {
+    font-size: 1.4rem;
+    color: #FD8153; /* Brand orange for the icon */
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.box_content {
+    background-color: #FFFFFF;
+    padding: 15px 20px;
+    margin: 0 0 25px 0;
+    border: 1px solid #D4D7DE;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+}
+
+.box_content_full {
+    background-color: #F8F9FA;
+    padding: 15px !important;
+    margin: 20px auto;
+    border-radius: 8px;
+    border: 1px solid #D4D7DE;
+}
+
+/* --- Quote Blocks (Final Style) --- */
+
+.blockquote {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: none;
+    border: none; /* All borders removed */
+    position: relative;
+}
+
+/* Styles the decorative opening quotation mark */
+.blockquote::before {
+    content: "â€œ";
+    font-family: 'Feijoa', serif;
+    float: left; /* Allows text to wrap around the icon */
+    font-size: 5em;
+    color: #FD8153; /* Brand orange */
+    line-height: 0.8;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+/* Styles the main quote text */
+.blockquote .blockquote_text {
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    font-size: 1.2em;
+    color: #232830;
+    line-height: 1.7;
+    text-align: left;
+    overflow: hidden; /* Contains the text flow */
+}
+
+/* Styles the attribution/credit line */
+.blockquote .blockquote_text--credit {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-size: 1em;
+    color: #546072;
+    margin-top: 20px;
+    clear: both; /* Ensures it appears below the floated icon */
+}
+
+/* Adds the em-dash before the credit text */
+.blockquote .blockquote_text--credit::before {
+    content: "â€” ";
+}
+
+/* --- Template Blocks (Pad Boxes) --- */
+/* A consistent design for all informational "pad-box" containers. */
+
+.pad-box,
+.pad-box-mega,
+.pad-box-mini,
+.pad-box-micro {
+    margin: 20px auto;
+    background-color: #F8F9FA;
+    border: 1px solid #D4D7DE;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.pad-box {
+    padding: 15px 20px;
+}
+
+.pad-box-mega {
+    padding: 30px;
+}
+
+/* Standardized padding for smaller boxes */
+.pad-box-mini,
+.pad-box-micro {
+    padding: 10px 20px;
+}
+
+
+/* --- Clickable Module Cards --- */
+/* Styles for the grid of clickable cards used in module overviews. */
+
+.module-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.module-cards-container * {
+    text-decoration: none !important;
+    color: #133844;
+}
+
+.module-cards-container .module-card-container--outer {
+    background: #FFFFFF;
+    transition: background-color 200ms ease, border-color 200ms ease;
+    box-shadow: none;
+    border: 1px solid #D4D7DE;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+}
+
+.module-cards-container .module-card-container--outer:hover {
+    background: #F8F9FA;
+    border-color: #B5BDC8;
+}
+
+.module-cards-container .module-card-heading {
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.module-cards-container .module-card-text {
+    font-size: 15px;
+    margin: 5px 0;
+    color: #546072;
+}
+
+/* --- Glossary --- */
+/* A clean, modern design for the glossary page and its navigation. */
+
+.glossary-container {
+    margin: 30px 0;
+}
+
+.glossary-alphabet-nav table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+    margin-bottom: 20px;
+    border: none;
+}
+
+.glossary-alphabet-nav td {
+    padding: 8px 5px;
+    text-align: center;
+    border: 1px solid #D4D7DE;
+    border-radius: 6px;
+    background-color: #F8F9FA;
+    transition: background-color 0.2s ease;
+}
+
+.glossary-alphabet-nav td:hover {
+    background-color: #EBEDFB;
+}
+
+.glossary-alphabet-nav td a {
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    color: #133844 !important;
+    text-decoration: none !important;
+    display: block;
+}
+
+.glossary-term h3 {
+    font-family: 'Feijoa', serif;
+    color: #133844;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+.glossary-term p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
