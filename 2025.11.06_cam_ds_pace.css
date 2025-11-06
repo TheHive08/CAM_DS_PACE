@@ -459,7 +459,7 @@ caption {
 
 /* Styles the decorative opening quotation mark */
 .blockquote::before {
-    content: "â€œ";
+    content: "“";
     font-family: 'Feijoa', serif;
     float: left; /* Allows text to wrap around the icon */
     font-size: 5em;
@@ -493,7 +493,7 @@ caption {
 
 /* Adds the em-dash before the credit text */
 .blockquote .blockquote_text--credit::before {
-    content: "â€” ";
+    content: "— ";
 }
 
 /* --- Template Blocks (Pad Boxes) --- */
@@ -618,5 +618,6 @@ caption {
     font-size: 16px;
     line-height: 1.6;
 }
+
 
 
