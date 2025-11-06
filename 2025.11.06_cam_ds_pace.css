@@ -3,6 +3,12 @@
    to ensure a consistent baseline across the platform. */
 @import url('https://fonts.googleapis.com/css2?family=Feijoa&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 
+@keyframes bannerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
 /*##################################################################################################################################*/
 /*###############   Element: Page Width + Footer Margin   ##########################################################################*/
 /*##################################################################################################################################*/
@@ -63,26 +69,20 @@ body.pages .page-title {
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-/* Banner image + placeholder */
+
 body.assignments #assignment_show img:first-of-type,
 body.discussions #discussion_topic img:first-of-type,
 body.pages #wiki_page_show img:first-of-type {
   width: 100%;
   height: auto;
-  max-height: 320px; /* limit banner height */
   display: block;
-  object-fit: cover;
   background-color: #f4f4f4;
   aspect-ratio: 16/9;
-  border-radius: 4px;
-  animation: bannerFadeIn 1.2s ease-in-out both;
+  object-fit: cover;
+  margin-top: 3rem;
+  animation: bannerFadeIn 1.5s ease-in-out both;
 }
 
-/* Fade-in animation */
-@keyframes bannerFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 
 /* Space below banner */
 body.context-assignments #assignment_show .assignment-buttons {
