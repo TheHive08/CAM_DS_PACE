@@ -101,6 +101,40 @@
     transform: none !important;
 }
 
+/* --- Assignment Page Styling --- */
+.assignment .ic-Layout-content__main {
+  border: none !important; /* removes the frame */
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.assignment .ic-Layout-content__title,
+.assignment h1.page-title {
+  position: absolute !important;
+  top: 30px;
+  left: 40px;
+  z-index: 10;
+  font-size: 24px;
+  color: #133844;
+  background: rgba(255,255,255,0.85);
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.assignment .ic-Layout-content__main img:first-of-type {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 60px; /* gives room for overlay title */
+}
+
+.assignment .ic-Layout-wrapper {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
 /*##################################################################################################################################*/
 /*###############   Element: Text & Typography   ###################################################################################*/
 /*##################################################################################################################################*/
