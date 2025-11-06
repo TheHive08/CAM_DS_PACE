@@ -134,6 +134,54 @@
   box-shadow: none !important;
 }
 
+/* === Assignments: float title over banner + remove frame === */
+
+/* remove the outer frame on assignment pages */
+body.context-assignments #content,
+body.context-assignments #content-wrapper {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* make the assignment area the positioning context */
+body.context-assignments #assignment_show {
+  position: relative;
+}
+
+/* float the H1 over the first image */
+body.context-assignments #assignment_show .assignment-title {
+  position: absolute !important;
+  top: 24px;
+  left: 24px;
+  z-index: 5;
+}
+
+body.context-assignments #assignment_show .assignment-title .title-content,
+body.context-assignments #assignment_show .assignment-title .title-content .title {
+  margin: 0 !important;
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 4px;
+  color: #133844;
+  font-size: 22px; /* adjust if needed */
+  line-height: 1.2;
+}
+
+/* ensure the banner image spans full width and sits under title */
+body.context-assignments #assignment_show img:first-of-type {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* optional: add space below the banner so content doesn't collide */
+body.context-assignments #assignment_show .assignment-buttons {
+  margin-top: 12px;
+}
+
+
 
 /*##################################################################################################################################*/
 /*###############   Element: Text & Typography   ###################################################################################*/
