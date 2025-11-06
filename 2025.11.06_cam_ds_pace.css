@@ -48,7 +48,7 @@ body.assignments .assignment-title,
 body.discussions .discussion-title,
 body.pages .page-title {
   position: absolute !important;
-  top: 2.5rem;
+  top: 3rem;
   left: 2.5rem;
   z-index: 10;
   background: rgba(255,255,255,0.95);
@@ -68,18 +68,25 @@ body.pages #wiki_page_show img:first-of-type {
   width: 100%;
   height: auto;
   display: block;
-  background-color: #f4f4f4; /* keeps placeholder space stable */
+  background-color: #f4f4f4;
   aspect-ratio: 16/9;
   object-fit: cover;
-  margin-top: 3rem; /* spacing for overlay */
+  margin-top: 3rem;
+  animation: bannerFadeIn 1.2s ease-in-out both;
 }
 
-/* Optional: add spacing below banner */
+/* Fade-in animation */
+@keyframes bannerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Spacing below banner */
 body.context-assignments #assignment_show .assignment-buttons {
   margin-top: 12px;
 }
 
-/* Placeholder behavior when image is missing */
+/* Placeholder when no image present */
 body.assignments #assignment_show:not(:has(img))::before,
 body.discussions #discussion_topic:not(:has(img))::before,
 body.pages #wiki_page_show:not(:has(img))::before {
@@ -89,6 +96,7 @@ body.pages #wiki_page_show:not(:has(img))::before {
   background-color: #f4f4f4;
   aspect-ratio: 16/9;
 }
+
 
 
 /*##################################################################################################################################*/
