@@ -19,26 +19,21 @@
   margin-left: auto !important;
   margin-right: auto !important;
   float: none !important;
-  padding-top: 0 !important; /* removes excess spacing above banner */
+  padding-top: 40px !important; /* restores top spacing consistency */
 }
 
 /* --- Module Sequence Footer Spacing --- */
 .module-sequence-footer {
   margin-top: 40px;
   padding-top: 20px;
+  border-top: 1px solid #e3e3e3; /* subtle divider for clarity */
 }
 
 /*##################################################################################################################################*/
 /*###############   Element: Banners & Page Titles (Refined)   ######################################################################*/
 /*##################################################################################################################################*/
 
-/* --- Banner Fade-In Animation --- */
-@keyframes bannerFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* --- Remove default frame and padding --- */
+/* Remove default frame and padding */
 body.assignments #content-wrapper,
 body.assignments #content,
 body.discussions #content-wrapper,
@@ -47,55 +42,60 @@ body.pages #content-wrapper {
   box-shadow: none !important;
   background: transparent !important;
   padding: 0 !important;
-  margin-top: 10px !important; /* reduced to align banner closer to top */
+  margin-top: 40px !important; /* consistent gap above banner */
 }
 
-/* --- Allow overlay positioning --- */
+/* Ensure the main content allows overlay */
 body.assignments #assignment_show,
 body.discussions #discussion_topic,
 body.pages #wiki_page_show {
   position: relative;
 }
 
-/* --- Floating title box --- */
+/* Floating title box */
 body.assignments .assignment-title,
 body.discussions .discussion-title,
 body.pages .page-title {
   position: absolute !important;
-  top: 55%; /* centers better vertically on most banners */
-  left: 2rem;
-  transform: translateY(-50%);
+  top: 18%; /* positions title near top of banner */
+  left: 2.5rem;
   z-index: 10;
-  background: rgba(255,255,255,0.94);
-  padding: 0.7rem 1.4rem;
+  background: rgba(255,255,255,0.92);
+  padding: 0.7rem 1.5rem;
   border-radius: 6px;
   color: #133844;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 600;
   line-height: 1.3;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-/* --- Banner image + placeholder background --- */
+/* Banner image + placeholder background */
 body.assignments #assignment_show img:first-of-type,
 body.discussions #discussion_topic img:first-of-type,
 body.pages #wiki_page_show img:first-of-type {
   width: 100%;
   height: auto;
   display: block;
-  background-color: #f4f4f4;
+  background-color: #f4f4f4; /* keeps placeholder space stable */
   aspect-ratio: 16/9;
   object-fit: cover;
-  margin-top: 2rem; /* reduced top margin for cleaner layout */
+  margin-top: 3rem;
   animation: bannerFadeIn 1.5s ease-in-out both;
 }
 
-/* --- Space below banner --- */
-body.context-assignments #assignment_show .assignment-buttons {
-  margin-top: 20px;
+/* Fade-in animation for banners */
+@keyframes bannerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* --- Placeholder when image missing --- */
+/* Space below banner */
+body.context-assignments #assignment_show .assignment-buttons {
+  margin-top: 24px;
+}
+
+/* Placeholder when image missing */
 body.assignments #assignment_show:not(:has(img))::before,
 body.discussions #discussion_topic:not(:has(img))::before,
 body.pages #wiki_page_show:not(:has(img))::before {
@@ -105,6 +105,7 @@ body.pages #wiki_page_show:not(:has(img))::before {
   background-color: #f4f4f4;
   aspect-ratio: 16/9;
 }
+
 
 
 
