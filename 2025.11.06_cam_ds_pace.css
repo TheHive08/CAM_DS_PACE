@@ -555,6 +555,109 @@ table tr:last-child td {
     padding: 10px 20px;
 }
 
+/*##################################################################################################################################*/
+/*###############   Element: Module Cards (Unified Layout & Responsive Grid)   ######################################################*/
+/*##################################################################################################################################*/
+
+/* --- Grid container for module and topic cards --- */
+.module-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 30px 0;
+}
+
+/* --- Ensure consistent link and color behavior --- */
+.module-cards-container * {
+  text-decoration: none !important;
+  color: #133844;
+  box-sizing: border-box;
+}
+
+/* --- Clickable outer card --- */
+.module-card-container--outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #d4d7de;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 180px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.module-card-container--outer:hover {
+  border-color: #b5bdc8;
+  background: #f8f9fa;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* --- Inner content --- */
+.module-card-inner--top {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+/* --- Week label --- */
+.week-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3b5c68;
+  margin-bottom: 6px;
+}
+
+/* --- Card title --- */
+.module-card-heading {
+  font-size: 16px;
+  font-weight: 600;
+  color: #133844;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+/* --- Optional supporting text --- */
+.module-card-text {
+  font-size: 14px;
+  color: #546072;
+  margin-top: 5px;
+}
+
+/* --- Pill container for tags or metadata --- */
+.pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.pill {
+  display: inline-block;
+  background: #f0f2f5;
+  border: 1px solid #d4d7de;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  color: #133844;
+}
+
+/* --- Responsive grid breakpoints --- */
+@media (max-width: 1024px) {
+  .module-cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .module-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 
