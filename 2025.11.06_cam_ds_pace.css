@@ -36,18 +36,18 @@
 /* Banner container fixed to content width and centered */
 .banner-container {
   max-width: 1000px;
-  margin: 0 auto 2rem auto; /* center + spacing below */
+  margin: 0 auto 2rem auto;
   position: relative;
   overflow: hidden;
-  background-color: #f4f4f4; /* permanent placeholder background */
-  border-radius: 4px;
+  background-color: #f4f4f4;
+  border-radius: 4px; 
 }
 
 /* Maintain stable height ratio to prevent layout jump */
 .banner-container::before {
   content: "";
   display: block;
-  padding-bottom: 56.25%; /* 16:9 ratio placeholder */
+  padding-bottom: 56.25%; /* 16:9 */
 }
 
 /* Image sits absolutely inside container and covers the space */
@@ -55,12 +55,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* cut from sides as needed */
+  width: 100%;              /* fit width of container */
+  height: 100%;             /* fill height */
+  max-width: 1000px;        /* never exceed content width */
+  max-height: 562.5px;      /* 16:9 of 1000px */
+  object-fit: cover;        /* trim sides when needed */
   object-position: center;
   opacity: 1;
   transition: opacity 0.4s ease-in-out;
+  margin: 0 auto;           /* center horizontally */
 }
 
 /* Page title floating in top-left corner */
