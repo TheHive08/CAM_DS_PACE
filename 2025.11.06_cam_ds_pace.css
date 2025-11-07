@@ -30,79 +30,64 @@
 }
 
 /*##################################################################################################################################*/
-/*###############   Element: Banners (Canvas-safe, 1000px wide, no jump)  ##########################################################*/
+/*###############   Element: Banner Container — Stable Version   ###################################################################*/
 /*##################################################################################################################################*/
 
-/* Wrapper aligns with content width and prevents layout shift */
+/* === Banner Wrapper === */
+/* Fixed to the Canvas content width (1000 px), centred with consistent spacing */
 .banner-container {
-  max-width: 1000px;
-  margin: 0 auto 24px;
   position: relative;
+  width: 1000px;
+  max-width: 100%;
+  margin: 0 auto 25px auto;
   overflow: hidden;
+  border-radius: 6px;
   background: #f4f4f4;
-  border-radius: 4px;
 }
 
-/* Maintain placeholder ratio before image loads */
-.banner-container::before {
-  content: "";
+/* === Banner Image === */
+/* Stays stable inside the wrapper, cuts from sides responsively, never jumps */
+.banner-container img {
   display: block;
-  aspect-ratio: 16 / 9;
-  background-color: #f4f4f4;
-}
-
-/* Fallback for older browsers */
-@supports not (aspect-ratio: 1 / 1) {
-  .banner-container::before {
-    padding-bottom: 56.25%;
-  }
-}
-
-/* Override Canvas default image rules — locks banner inside container */
-.pages    #wiki_page_show     .show-content .banner-container > img,
-.assignments #assignment_show .banner-container > img,
-.discussions #discussion_topic .banner-container > img {
-  position: absolute;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
+  width: 100%;
+  height: auto;
   object-fit: cover;
   object-position: center;
-  display: block;
-  margin: 0 !important;
-  opacity: 1;
-  transform: translateZ(0);
+  transition: none;
+  border-radius: 6px;
+  margin: 0;
 }
 
-/* Floating title overlay in top-left */
-.pages .page-title,
-.assignments .assignment-title,
-.discussions .discussion-title {
-  position: absolute !important;
-  top: 12px;
-  left: 16px;
+/* === Banner Title Overlay === */
+/* Floats neatly inside the banner, top-left alignment */
+.page-title {
+  position: absolute;
+  top: 24px;
+  left: 24px;
   z-index: 2;
-  background: rgba(255,255,255,0.92);
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 6px 14px;
+  border-radius: 6px;
   color: #133844;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 600;
   line-height: 1.3;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  max-width: 90%;
 }
 
-/* Responsive fallback for narrower screens */
-@media (max-width: 1020px) {
+/* === Responsive Adjustments === */
+@media (max-width: 1024px) {
   .banner-container {
-    max-width: 100%;
+    width: 100%;
     border-radius: 0;
   }
+  .page-title {
+    top: 18px;
+    left: 18px;
+    font-size: 1.1rem;
+  }
 }
-
-
 
 
 /*##################################################################################################################################*/
