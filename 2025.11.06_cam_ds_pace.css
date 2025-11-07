@@ -30,10 +30,10 @@
 }
 
 /*##################################################################################################################################*/
-/*###############   Element: Banners & Page Titles (Fixed Width @ 1000px)   #########################################################*/
+/*###############   Element: Banners & Page Titles (Stable @ 1000px Fixed Width)   ##################################################*/
 /*##################################################################################################################################*/
 
-/* Remove default frame and spacing */
+/* Wrapper alignment and spacing */
 body.assignments #content-wrapper,
 body.discussions #content-wrapper,
 body.pages #content-wrapper {
@@ -45,69 +45,68 @@ body.pages #content-wrapper {
   max-width: 1000px !important;
 }
 
-/* Ensure the main content allows overlay */
-body.assignments #assignment_show,
-body.discussions #discussion_topic,
-body.pages #wiki_page_show {
+/* Banner container (uses your existing <div class="banner-container">) */
+.banner-container {
   position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* Banner image (fixed width inside content area) */
-body.assignments #assignment_show img:first-of-type,
-body.discussions #discussion_topic img:first-of-type,
-body.pages #wiki_page_show img:first-of-type {
-  display: block;
   width: 1000px;
-  height: auto;
   margin: 30px auto 0 auto;
-  object-fit: cover;
+  aspect-ratio: 1000 / 868; /* matches your actual banner size */
+  background-color: #f4f4f4; /* keeps placeholder stable before image load */
+  overflow: hidden;
   border-radius: 4px;
 }
 
-/* Floating title box (top-left overlay) */
+/* Banner image fills container perfectly without reflow */
+.banner-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease-in; /* optional, smooths rendering */
+  opacity: 1;
+}
+
+/* Fallback placeholder for missing images */
+.banner-container:not(:has(img))::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+}
+
+/* Floating title box overlay */
 body.assignments .assignment-title,
 body.discussions .discussion-title,
 body.pages .page-title {
   position: absolute !important;
-  top: 1.5rem;
+  top: 1.8rem;
   left: 2rem;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255,255,255,0.92);
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   color: #133844;
   font-size: 1.3rem;
   font-weight: 600;
   line-height: 1.3;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-/* Placeholder (for pages without a banner image) */
-body.assignments #assignment_show:not(:has(img))::before,
-body.discussions #discussion_topic:not(:has(img))::before,
-body.pages #wiki_page_show:not(:has(img))::before {
-  content: "";
-  display: block;
-  width: 1000px;
-  height: 562px; /* 16:9 ratio for placeholder */
-  margin: 30px auto 0 auto;
-  background-color: #f4f4f4;
-  border-radius: 4px;
-}
-
-/* --- Responsiveness: scale down on small screens --- */
+/* Responsive scaling for smaller screens */
 @media (max-width: 1100px) {
-  body.assignments #assignment_show img:first-of-type,
-  body.discussions #discussion_topic img:first-of-type,
-  body.pages #wiki_page_show img:first-of-type,
-  body.assignments #assignment_show:not(:has(img))::before,
-  body.discussions #discussion_topic:not(:has(img))::before,
-  body.pages #wiki_page_show:not(:has(img))::before {
+  .banner-container {
     width: 100%;
+    aspect-ratio: 1000 / 868;
   }
 }
+
 
 
 /*##################################################################################################################################*/
