@@ -632,8 +632,7 @@ table tr:last-child td {
 .module-card-text {
   font-size: 14px;
   color: #546072;
-  margin-top: 5px;
-}
+margin: 5px 0 10px;}
 
 /* --- Pill container for tags or metadata --- */
 .pill-container {
