@@ -22,11 +22,17 @@
   padding-top: 40px !important; /* restores top spacing consistency */
 }
 
+/* Remove border from assignment description box */
+#assignment_show .description.teacher-version {
+    border: none !important;
+    box-shadow: none !important;
+}
+
 /* --- Module Sequence Footer Spacing --- */
 .module-sequence-footer {
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid #e3e3e3; /* subtle divider for clarity */
+  /* border-top: 1px solid #e3e3e3; subtle divider for clarity */
 }
 
 /*##################################################################################################################################*/
