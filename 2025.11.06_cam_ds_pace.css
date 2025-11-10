@@ -30,73 +30,67 @@
 }
 
 /*##################################################################################################################################*/
-/*###############   Element: Banners & Page Titles (Fixed Width + Floating Title)   ################################################*/
+/*###############   Element: Page Banners & Headings – Match LSE Layout   ###########################################################*/
 /*##################################################################################################################################*/
 
-/* Banner container – fixed width, consistent height, centered */
-body.pages #wiki_page_show .banner-container {
-  position: relative;
-  width: 1000px;
-  height: 868px;
-  margin: 0 auto 2rem auto;
-  overflow: hidden;
-  background-color: #f4f4f4;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.pages.show .page-title {
+    font-size: 24px;
+    font-weight: 400;
+    color: #393D3E;
+    top: 110px;
+    display: block;
+    position: absolute;
+    background-color: rgb(255 255 255 / 90%);
+    left: 10%;
+    right: 10%;
+    padding: 10px 20px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 65px 30px rgb(0 0 0 / 15%);
+    z-index: 10;
 }
 
-/* Image – scales within fixed box */
-body.pages #wiki_page_show .banner-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: opacity 0.3s ease-in-out;
+/* Banner container */
+.banner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 272px !important;
+    background-color: #f4f4f4;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Heading – floats over banner */
-body.pages .show-content .page-title {
-  position: absolute;
-  top: 4rem; /* adjust this to move text down */
-  left: calc(50% - 460px); /* aligns within 1000px container */
-  width: auto;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 0.6rem 1.4rem;
-  border-radius: 6px;
-  color: #133844;
-  font-size: 1.3rem;
-  font-weight: 600;
-  line-height: 1.3;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-/* Placeholder when image missing */
-body.pages #wiki_page_show .banner-container:not(:has(img))::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: #f4f4f4;
-}
-
-/* Responsive correction – scales entire banner down on smaller viewports */
-@media (max-width: 1024px) {
-  body.pages #wiki_page_show .banner-container {
-    width: 95%;
+/* Banner image */
+.banner-container img {
+    width: 100%;
     height: auto;
-    aspect-ratio: 1000 / 868;
-  }
-  body.pages .show-content .page-title {
-    left: 5%;
-    top: 2.5rem;
-    font-size: 1.1rem;
-  }
+    display: block;
+    margin: 0 auto;
+    border: none;
+    object-fit: cover;
 }
 
+/* Optional placeholder if no image is present */
+.banner-container:not(:has(img))::before {
+    content: "";
+    display: block;
+    width: 100%;
+    min-height: 272px;
+    background-color: #f4f4f4;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 900px) {
+    .pages.show .page-title {
+        left: 5%;
+        right: 5%;
+        font-size: 20px;
+        top: 80px;
+        padding: 8px 16px;
+    }
+}
 
 
 
