@@ -30,38 +30,72 @@
 }
 
 /*##################################################################################################################################*/
-/*###############   Element: Banner Container (Fixed 1000px wide, stable height, no jump)   ########################################*/
+/*###############   Element: Banners & Page Titles (Stable Version)   ##############################################################*/
 /*##################################################################################################################################*/
 
-/* --- Banners --- */
-/* Final stabilized version (Nov 2025 build) */
-
-.banner-container {
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto 40px auto;
-    background-color: #F8F9FA;
-    overflow: hidden;
-    border-radius: 0;
-    aspect-ratio: 1000 / 272; /* Keeps consistent shape */
+body.pages #wiki_page_show .banner-container {
+  position: relative;
+  width: 1000px;
+  max-width: 100%;
+  margin: 0 auto 1.5rem auto;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f4f4f4;
+  aspect-ratio: 16 / 9;
 }
 
-.banner-container img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 1000px;
-    object-fit: cover;
-    object-position: center;
-    transition: opacity 0.4s ease-in-out;
+/* Image stays perfectly scaled inside container */
+body.pages #wiki_page_show .banner-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: opacity 0.3s ease-in-out;
 }
 
-/* No hover zoom for banners */
-.no-hover-zoom {
-    cursor: default !important;
-    transform: none !important;
+/* Floating title overlay */
+body.pages #wiki_page_show .page-title {
+  position: absolute !important;
+  top: 1.8rem;
+  left: 2rem;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  color: #133844;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
+
+/* Keep spacing below banner consistent */
+body.pages #wiki_page_show + * {
+  margin-top: 1.5rem;
+}
+
+/* Placeholder fallback when no banner image */
+body.pages #wiki_page_show .banner-container:not(:has(img))::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #f4f4f4;
+}
+
+/* Responsive scaling */
+@media (max-width: 1024px) {
+  body.pages #wiki_page_show .banner-container {
+    width: 95%;
+  }
+  body.pages #wiki_page_show .page-title {
+    top: 1.2rem;
+    left: 1.2rem;
+    font-size: 1.1rem;
+  }
+}
+
 
 
 /*##################################################################################################################################*/
